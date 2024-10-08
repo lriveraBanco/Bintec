@@ -1,0 +1,13 @@
+# Ignorar el entorno virtual
+venv/
+.env/
+
+# Ignorar los archivos de caché de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar archivos grandes
+*.dll
+*.lib
+*.pyd
+*.pdf

@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "9112e52a-9b36-462d-bf28-93cbe4fcd276",
+		"name": "Bintec-2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29887832"
+	},
+	"item": [
+		{
+			"name": "Bienvenida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+<<<<<<< HEAD
+			"name": "Consumir API PDF-medellin",
+=======
+			"name": "Consumir API PDF-municipios",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "municipio",
+							"value": "medellin",
+							"type": "text"
+						},
+						{
+							"key": "archivo",
+							"type": "file",
+<<<<<<< HEAD
+							"src": "/C:/Users/lrivera/Downloads/INTEGRACION/Bintec-2024/data/municipios/Medellin/pdf/Acuerdo066de2017-Medellin.pdf"
+=======
+							"src": "/C:/Users/lrivera/Downloads/INTEGRACION/Bintec-Versiones/Bintec-2024 -1.0.0/files/Medellin Acuerdo.pdf"
+						},
+						{
+							"key": "source_type",
+							"value": "upload",
+							"type": "text"
+						},
+						{
+							"key": "nombre_base",
+							"value": "medallo_finall",
+							"type": "text"
+>>>>>>> 5e718cb7 (Remove large filesdd)
+						}
+					]
+				},
+				"url": {
+<<<<<<< HEAD
+					"raw": "http://localhost:8000/municipios/medellin/procesar-pdf/",
+=======
+					"raw": "http://localhost:8000/municipios/procesar-pdf/",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"municipios",
+<<<<<<< HEAD
+						"medellin",
+=======
+>>>>>>> 5e718cb7 (Remove large filesdd)
+						"procesar-pdf",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+<<<<<<< HEAD
+			"name": "Consumir API PDF-medellin Sharepoint",
+=======
+			"name": "descargar API PDF-municipios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "municipio",
+							"value": "medellin",
+							"type": "text"
+						},
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/lrivera/Downloads/INTEGRACION/Bintec-Versiones/Bintec-2024 -1.0.0/files/Medellin Acuerdo.pdf"
+						},
+						{
+							"key": "source_type",
+							"value": "upload",
+							"type": "text"
+						},
+						{
+							"key": "nombre_base",
+							"value": "prueba_medellinff",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/descargar-excel/78245",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"descargar-excel",
+						"78245"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exogena y calendario",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+<<<<<<< HEAD
+							"key": "source_type",
+							"value": "sharepoint",
+							"type": "text"
+						},
+						{
+							"key": "sharepoint_file_url",
+							"value": "https://bancolombia.sharepoint.com/sites/co-dsf/Documentos%20compartidos/Forms/https___bancolombia.sharepoint.com_sites_co-dsf_Documentos_20compartidos_Forms_AllItems.aspx_id=_2Fsites_2Fco_2Ddsf_2FDocumentos_20compartidos_2FGSRLT&viewid=53e774a0_2Dbfd8_2D449e_2D8294_2Dc920095e982f.aspx?id=%2Fsites%2Fco%2Ddsf%2FDocumentos%20compartidos%2FGSRLT%2FPortal%20de%20normas%2FAcuerdos%2FMedellin%2FAcuerdo%20093%20de%202023%20Medellin%20%28aumento%20de%20tarifas%29%2Epdf&viewid=53e774a0%2Dbfd8%2D449e%2D8294%2Dc920095e982f&parent=%2Fsites%2Fco%2Ddsf%2FDocumentos%20compartidos%2FGSRLT%2FPortal%20de%20normas%2FAcuerdos%2FMedellin",
+=======
+							"key": "municipio",
+							"value": "medellin",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+<<<<<<< HEAD
+					"raw": "http://localhost:8000/municipios/medellin/procesar-pdf/",
+=======
+					"raw": "http://localhost:8000/procesar-exogena/",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+<<<<<<< HEAD
+						"municipios",
+						"medellin",
+						"procesar-pdf",
+=======
+						"procesar-exogena",
+>>>>>>> 5e718cb7 (Remove large filesdd)
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "juan@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "juan.123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"10\",\r\n  \"name\": \"juan\",\r\n  \"email\": \"juan@gmail.com\",\r\n  \"password\": \"juan.123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqdWFuQGdtYWlsLmNvbSIsImV4cCI6MTcyNzczNTYwMn0.V_vtIMT8UIF5QHUgQQPtvi0fQ-X1Sy77_PdNZQiP7V4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsb3BlekBnbWFpbC5jb20iLCJleHAiOjE3MjcxOTA4NDh9.NsVy02Y4yP1OQ20glP0uaz-FegGuqmZ6bTW2tMLUB20",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"current_password\": \"mypassword\",\r\n  \"new_password\": \"nueva_password\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/profile/change-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+<<<<<<< HEAD
+		},
+		{
+			"name": "Consumir API PDF-manizales",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "municipio",
+							"value": "manizales",
+							"type": "text"
+						},
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/lrivera/Downloads/INTEGRACION/Bintec-2024/data/municipios/Manizales/pdf/Manizales acuerdo.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/municipios/manizales/procesar-pdf/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"municipios",
+						"manizales",
+						"procesar-pdf",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
+=======
+		}
+	]
+}
+>>>>>>> 5e718cb7 (Remove large filesdd)
