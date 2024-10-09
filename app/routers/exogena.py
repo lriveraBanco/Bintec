@@ -16,3 +16,4 @@ async def procesar_exogena_endpoint(municipio: str = Form(...)):
         return FileResponse(ruta_excel, media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', filename=os.path.basename(ruta_excel))
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error al procesar el archivo: {str(e)}")
+              

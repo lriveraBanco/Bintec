@@ -10,6 +10,7 @@ from app.utils.pdf_processing import (
     buscar_valor_articulo_56
 )
 
+
 def procesar_pdf_y_guardar_en_excel_medellin(ruta_pdf, municipio):
     """Procesa un PDF y guarda la información en un archivo de Excel específico."""
     ruta_excel = os.path.join('data', 'municipios', municipio, 'plantilla', 'Ejemplos industria y comercio3.xlsx')
