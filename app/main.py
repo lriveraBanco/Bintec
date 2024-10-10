@@ -4,7 +4,7 @@ from app.routers.user import user
 from fastapi.middleware.cors import CORSMiddleware 
 from app.routers.exogena import router as exogena_router
 from app.routers.descarga import router as descarga_router 
-
+from app.routers.archivos import router as listar_archivos
 
 app = FastAPI(
     title="API Bintec 2024",
@@ -25,7 +25,7 @@ app.include_router(router)
 app.include_router(user)
 app.include_router(exogena_router)
 app.include_router(descarga_router)
-
+app.include_router(listar_archivos)
 
 @app.get("/",tags=["municipios"])
 async def home():

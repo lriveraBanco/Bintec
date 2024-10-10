@@ -66,7 +66,7 @@ def procesar_municipio_pdf_async(funcion, *args):
         futuro = executor.submit(funcion, *args)
         return futuro.result()
 
-# Endpoint unificado para procesar PDF para múltiples municipios
+
 @router.post("/municipios/procesar-pdf/", tags=["municipios"])
 async def procesar_pdf_municipio(
     municipio: str = Form(...),
@@ -77,7 +77,8 @@ async def procesar_pdf_municipio(
     # Normalizar el nombre del municipio
     municipio_normalizado = normalize_string(municipio)
     municipio_capitalizado = normalize_string_capitalized(municipio)
-    ruta_procesar = None  # Inicializar la variable aquí
+    ruta_procesar = None
+    
     try:
         # Validar el tipo de fuente
         if source_type not in ["upload", "sharepoint"]:
@@ -86,7 +87,7 @@ async def procesar_pdf_municipio(
         # Manejar archivos subidos (upload)
         if source_type == "upload":
             if archivo is None:
-                raise HTTPException(status_code=500, detail="Debe subir un archivo si selecciona 'upload'.")
+                raise HTTPException(status_code=400, detail="Debe subir un archivo si selecciona 'upload'.")
 
             # Definir la ruta para guardar el PDF
             ruta_directorio_pdf = os.path.join("data", "municipios", municipio_normalizado, "pdf")
@@ -97,7 +98,7 @@ async def procesar_pdf_municipio(
                 async with aiofiles.open(ruta_guardado_pdf, "wb") as buffer:
                     contenido = await archivo.read()
                     await buffer.write(contenido)
-                ruta_procesar = ruta_guardado_pdf  # Asignar después de guardar correctamente
+                ruta_procesar = ruta_guardado_pdf
             except Exception as e:
                 raise HTTPException(status_code=500, detail="Error al guardar el archivo PDF.")
 
@@ -124,7 +125,7 @@ async def procesar_pdf_municipio(
         ruta_plantilla = cargar_plantilla_excel(os.path.join("data", "municipios", municipio_normalizado, "plantilla", "Ejemplos industria y comercio3.xlsx"))
         shutil.copyfile(ruta_plantilla, ruta_nuevo_archivo_excel)
 
-        # Procesar el PDF según el municipio, en paralelo si está en CPU
+        # Procesar el PDF según el municipio
         if municipio_normalizado == "medellin":
             resultado = procesar_municipio_pdf_async(procesar_pdf_y_guardar_en_excel_medellin, ruta_procesar, municipio_normalizado)
         elif municipio_normalizado == "manizales":
@@ -150,9 +151,10 @@ async def procesar_pdf_municipio(
                 "nombre_archivo": os.path.basename(ruta_nuevo_archivo_excel),
                 "contenido": contenido_excel,
                 "municipio": municipio_normalizado,
-                "fecha": datetime.now()
+                "fecha": datetime.now(),
+                "Tipo_recurso": source_type  # Asegúrate de que aquí esté correctamente asignado
             }
-            fs.put(contenido_excel, filename=os.path.basename(ruta_nuevo_archivo_excel), id=nuevo_id)  # Guardar en GridFS
+            fs.put(contenido_excel, filename=os.path.basename(ruta_nuevo_archivo_excel), id=nuevo_id, metadata=documento)
 
         return {
             "mensaje": f"Archivo PDF procesado para {municipio} y actualizado",
@@ -162,7 +164,7 @@ async def procesar_pdf_municipio(
                 "id": nuevo_id  # Devolver el ID generado
             }
         }
-    
+
     except Exception as e:
         logging.error(f"Error procesando municipio {municipio}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
