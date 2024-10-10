@@ -4,12 +4,6 @@ from app.config.db_archivos import fs
 
 router = APIRouter()
 
-from fastapi import APIRouter, HTTPException
-from bson import ObjectId
-from app.config.db_archivos import fs
-
-router = APIRouter()
-
 @router.get("/archivos", tags=["archivos"])
 async def obtener_todos_los_archivos():
     try:
