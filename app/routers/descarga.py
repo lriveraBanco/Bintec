@@ -7,7 +7,7 @@ import os
 
 
 router = APIRouter()
-@router.get("/descargar-excel/{file_id}", tags=["exogena"])
+@router.get("/descargar-excel/{file_id}", tags=["archivos"])
 async def descargar_excel_por_id(file_id: int):
     try:
         # Buscar el archivo en la base de datos usando el campo 'id'

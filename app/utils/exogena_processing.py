@@ -1,30 +1,37 @@
-import pandas as pd
-from pdf2image import convert_from_path
-import easyocr
-import numpy as np
+import pytesseract
+import pdfplumber
+from PIL import Image, ImageFilter
+import re
 
-def procesar_pdf_exogena(ruta_base):
-    ruta_pdf_exogena = ruta_base + r"\Resolucion-202350104714-Exogena.pdf"
+pytesseract.pytesseract.tesseract_cmd = r'C:\Users\lrivera\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
-    # Convertir PDF a imágenes
-    imagenes_exogena = convert_from_path(ruta_pdf_exogena)
-    
-    reader = easyocr.Reader(['es'])
-    texto_exogena = ""
-    for img in imagenes_exogena:
-        img_np = np.array(img)
-        resultados_exogena = reader.readtext(img_np)
-        for (_, text, _) in resultados_exogena:
-            texto_exogena += text + " "
+# Función para preprocesar imágenes
+def preprocesar_imagen(imagen):
+    imagen_gris = imagen.convert('L')  # Convertir a escala de grises
+    imagen_gris = imagen_gris.filter(ImageFilter.SHARPEN)  # Aumentar el enfoque
+    umbral = 128
+    imagen_binaria = imagen_gris.point(lambda x: 0 if x < umbral else 255, '1')
+    return imagen_binaria
 
-    # Extraer información clave (ajustar según sea necesario)
-    informacion_exogena_data = [["Información Exógena"]]
-    fechas_data = [["Información periodo grabable"]]
-    magneticos_data = [["Medios Magnéticos"]]
+# Función para extraer texto desde un archivo PDF
+def extraer_texto_desde_pdf(pdf_file):
+    texto_extraido = ""
+    with pdfplumber.open(pdf_file) as pdf:
+        for pagina in pdf.pages:
+            texto_extraido += pagina.extract_text() + "\n"
+    return texto_extraido
 
-    df_informacion_exogena = pd.DataFrame(informacion_exogena_data, columns=["Información Exógena"])
-    df_fechas = pd.DataFrame(fechas_data, columns=["Información periodo grabable"])
-    df_magneticos = pd.DataFrame(magneticos_data, columns=["Medios Magnéticos"])
+# Función para extraer información de la tabla de datos exógenos
+def extraer_tabla_informacion_exogena(texto):
+    filas = texto.splitlines()
+    datos = []
+    for fila in filas:
+        columnas = re.split(r'\s{2,}', fila.strip())  # Separar por múltiples espacios
+        if len(columnas) >= 2:  # Validar que haya al menos dos columnas
+            datos.append(columnas)
+    return datos
 
-    return df_informacion_exogena, df_fechas, df_magneticos
-
+# Función para filtrar y reemplazar datos
+def filtrar_y_reemplazar(datos):
+    # Implementar lógica de filtrado y reemplazo según sea necesario
+    return datos
