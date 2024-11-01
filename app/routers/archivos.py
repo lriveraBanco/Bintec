@@ -2,6 +2,11 @@ from fastapi import APIRouter, HTTPException
 from bson import ObjectId
 from app.config.db_archivos import fs
 
+router = APIRouter()
+
+from fastapi import APIRouter, HTTPException
+from bson import ObjectId
+from app.config.db_archivos import fs
 
 router = APIRouter()
 
