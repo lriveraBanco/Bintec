@@ -5,7 +5,7 @@ import random
 import logging
 import unicodedata
 from app.utils.exogena_processing import preprocesar_imagen, extraer_texto_desde_pdf, extraer_tabla_informacion_exogena, filtrar_y_reemplazar
-from app.config.db_archivos import fs
+from app.config.db_calendario import fs
 from PIL import Image
 import pytesseract
 

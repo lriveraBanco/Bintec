@@ -5,7 +5,7 @@ from PIL import Image, ImageFilter
 import re
 import fitz
 import openpyxl
-from app.config.db_archivos import fs
+from app.config.db_calendario import fs
 
 # Configuración de Tesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\lrivera\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
