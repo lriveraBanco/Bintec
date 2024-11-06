@@ -40,7 +40,7 @@ async def obtener_todos_los_archivos():
 
             datos_archivo = {
                 "nombre_archivo": archivo.filename.replace(".xlsx", ""),  # Eliminar extensión .xlsx
-                "codigo": str(archivo._id),  # Usar _id en lugar de id
+                "codigo": str(metadata.get("id", archivo._id)), 
                 "fecha": archivo.uploadDate.strftime("%Y-%m-%d"),
                 "municipio": municipio,
                 "Tipo_recurso": tipo_recurso,
